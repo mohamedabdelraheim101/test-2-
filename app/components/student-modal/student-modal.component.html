@@ -1,0 +1,33 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{ isEdit ? 'Edit' : 'Create' }} Student</h4>
+    <button type="button" class="close" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" class="form-control" formControlName="name" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" class="form-control" formControlName="email" />
+      </div>
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input id="age" type="number" class="form-control" formControlName="age" />
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input id="dob" class="form-control" formControlName="dob"  />
+        <!-- <owl-date-time #dt1></owl-date-time> -->
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <ng-select id="gender" [items]="genders" bindLabel="name" bindValue="value" formControlName="gender"></ng-select>
+      </div>
+      <button type="submit" class="btn btn-primary">{{ isEdit ? 'Save' : 'Create' }}</button>
+    </form>
+  </div>
+  

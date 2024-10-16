@@ -1,0 +1,35 @@
+<div class="container">
+    <button class="btn btn-primary mb-3" (click)="openModal()">Create Student</button>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>
+            <input type="checkbox" (change)="selectAll($event.target.checked)">
+          </th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Age</th>
+          <th>Date of Birth</th>
+          <th>Gender</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students; let i = index">
+          <td>
+            <input type="checkbox" [(ngModel)]="student.selected">
+          </td>
+          <td>{{ student.name }}</td>
+          <td>{{ student.email }}</td>
+          <td>{{ student.age }}</td>
+          <td>{{ student.dob | date: 'yyyy-MM-dd' }}</td>
+          <td>{{ student.gender }}</td>
+          <td>
+            <button class="btn btn-warning btn-sm" (click)="editStudent(i)">Edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-danger" *ngIf="hasSelectedStudents()" (click)="deleteSelected()">Delete Selected</button>
+  </div>
+  
